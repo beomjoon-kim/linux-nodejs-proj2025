@@ -16,6 +16,12 @@ app.use(express.urlencoded({extended: false}));
 // serve-static 미들웨어
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 서브 모듈 라우터 연결
+// /ex01/api/todos 접속
+app.use('/ex01', require('./routes/ex01'));
+// /ex02 접속
+app.use('/ex02', require('./routes/ex02'));
+
 app.get('/', (req, res) => {
     res.send('Hello Nodejs world!');
 });
